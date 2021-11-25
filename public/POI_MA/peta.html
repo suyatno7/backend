@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>Puskesmas Malang</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js"></script>
+  <style>
+    body { 
+        margin: 0; 
+        padding: 0; 
+    }
+    #map { 
+        position: absolute; 
+        top: 0; 
+        bottom: 0; 
+        width: 100%; 
+    }
+.marker {
+  background-image: url('cross.png');
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+  </style>
+</head>
+<body>
+<!-- Load the `mapbox-gl-geocoder` plugin. -->
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+
+<div id="map"></div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1Ijoic3V5YXRubzciLCJhIjoiY2t2dDVtanRpM2MxODJwcWc0dHBlcmhsbyJ9.4X1h6pTqfPqBzVyLUs2rJw';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [112.648217,
+          -7.993047],
+        zoom: 13
+    });
+const geojson = { 
+    
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Kedungkandang",
+        "Nama_Puske": "Puskesmas Kedungkandang",
+        "Alamat": "Jl. Ki Ageng Gribig No.142 (0341) 710112",
+        "y": -7.993047,
+        "x": 112.648217,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.648217,
+          -7.993047
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Kedungkandang",
+        "Nama_Puske": "Puskesmas Gribig",
+        "Alamat": "Jl. Ki Ageng Gribig No.97 (0341) 718165",
+        "y": -7.980702,
+        "x": 112.665302,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.665302,
+          -7.980702
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Kedungkandang",
+        "Nama_Puske": "Puskesmas Arjowinangun",
+        "Alamat": "Jl. Raya Arjowinangun No. 2 (0341) 751398",
+        "y": -8.038522,
+        "x": 112.641811,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.641811,
+          -8.038522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Sukun",
+        "Nama_Puske": "Puskesmas Janti",
+        "Alamat": "Jl. Janti Barat No.88, Sukun (0341) 352203",
+        "y": -8.00097,
+        "x": 112.620549,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.620549,
+          -8.00097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Sukun",
+        "Nama_Puske": "Puskesmas Ciptomulyo",
+        "Alamat": "Jl. Kol. Sugiyono VIII No.54, Sukun (0341) 329918",
+        "y": -8.002033,
+        "x": 112.62996,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.62996,
+          -8.002033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Sukun",
+        "Nama_Puske": "Puskesmas Mulyorejo",
+        "Alamat": "Jl. Budi Utomo No.18A, Sukun (0341) 580955",
+        "y": -7.987887,
+        "x": 112.597672,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.597672,
+          -7.987887
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Klojen",
+        "Nama_Puske": "Puskesmas Arjuno",
+        "Alamat": "Jl. Arjuno No.17, Klojen (0341) 396339",
+        "y": -7.978129,
+        "x": 112.62663,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.62663,
+          -7.978129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Klojen",
+        "Nama_Puske": "Puskesmas Bareng",
+        "Alamat": "Jl. Bareng Tebes No.10A, Klojen (0341) 322280",
+        "y": -7.978507,
+        "x": 112.622759,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.622759,
+          -7.978507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Klojen",
+        "Nama_Puske": "Puskesmas Rampal Celaket",
+        "Alamat": "Jl. Simpang Kasembon No.5, Klojen Telp. 0341-356380",
+        "y": -7.964288,
+        "x": 112.631644,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.631644,
+          -7.964288
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Blimbing",
+        "Nama_Puske": "Puskesmas Cisadea",
+        "Alamat": "Jl. Cisadea No.19, Blimbing (0341) 489540",
+        "y": -7.955432,
+        "x": 112.643586,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.643586,
+          -7.955432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Blimbing",
+        "Nama_Puske": "Puskesmas Kendalkerep",
+        "Alamat": "Jl. Sulfat No.100, Blimbing (0341) 484477",
+        "y": -7.961223,
+        "x": 112.650852,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.650852,
+          -7.961223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Blimbing",
+        "Nama_Puske": "Puskesmas Pandanwangi",
+        "Alamat": "Jl. LA. Sucipto No.315, Blimbing (0341) 484472",
+        "y": -7.947331,
+        "x": 112.65549,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.65549,
+          -7.947331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Blimbing",
+        "Nama_Puske": "Puskesmas Polowijen",
+        "Alamat": "Jl. Panji Suroso No. 9 Malang (0341)491320",
+        "y": -7.932214,
+        "x": 112.650059,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.650059,
+          -7.932214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Lowokwaru",
+        "Nama_Puske": "Puskesmas Dinoyo",
+        "Alamat": "Jl. Keramik No.2, Lowokwaru (0341) 581442",
+        "y": -7.943278,
+        "x": 112.611268,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.611268,
+          -7.943278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Lowokwaru",
+        "Nama_Puske": "Puskesmas Mojolangu",
+        "Alamat": "Jl. Sudimoro No.17A, Lowokwaru (0341) 482905",
+        "y": -7.938389,
+        "x": 112.632185,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.632185,
+          -7.938389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Kecamatan": "Lowokwaru",
+        "Nama_Puske": "Puskesmas Kendalsari",
+        "Alamat": "Jl. Cengger Ayam No.8, Lowokwaru (0341) 478215",
+        "y": -7.946247,
+        "x": 112.630824,
+        "kode": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.630824,
+          -7.946247
+        ]
+      }
+    }
+  ]
+};
+// add markers to map
+for (const feature of geojson.features) {
+  // create a HTML element for each feature
+  const el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(feature.geometry.coordinates)
+    .setPopup(
+    new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML(
+        `<h3>${feature.properties.Nama_Puske}</h3><p>${feature.properties.Alamat}</p>`
+      )
+  )
+    .addTo(map);
+}
+</script>
+
+</body>
+</html>
