@@ -1,10 +1,8 @@
 // Require the framework and instantiate it
 const fastify = require('fastify')({ logger: true })
-const path = require('path')
 
 //register
 fastify.register(require('fastify-static'), require ("./config/static").public);
-
 
 // Declare a route
 fastify.get('/', async (request, reply) => {
